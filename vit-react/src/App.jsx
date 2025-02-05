@@ -3,22 +3,29 @@ import './App.css'
 import ProfileCard from './ProfileCard';
 
 function App() { 
-  const hobby1=['Reading','Cooking']
+  const handleHobbyClick = (hobby) => {
+    alert(`You have clicked on: ${hobby}`);
+  };
+  const bubuRaniProfile = {
+    name:"BUBU Rani" ,
+    age:17,
+    isMember:true,
+    hobbies:['Reading','Cooking'], 
+    onHobbyClick:handleHobbyClick
+  };
 
-const person = {name: 'John', age: 30};
 
-//Without destructing using Dot notation
-//const name = person.name;
-//const age = person.age;
-
-// With structuring
-const {name, age} = person;
-
+  const duduProfile = {
+    name:"DUDU Raja" ,
+    age:18,
+    isMember:false,
+    hobbies:['Swimming','Hiking'],
+    onHobbyClick:handleHobbyClick
+  };
  return (
-  <div>
-      <h1>Hello</h1>
-      <ProfileCard name="BUBU Rani" age={17} isMember={true} hobbies={['Reading','Cooking']} />
-      <ProfileCard name="DUDU Raja"  age={18} isMember={false} hobbies={['Swimming','Hiking']} /> 
+  <div className='app-container'>
+      <ProfileCard {...bubuRaniProfile}/>
+      <ProfileCard {...duduProfile}/> 
   </div>
  );
 }

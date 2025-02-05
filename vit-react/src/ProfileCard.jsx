@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function ProfileCard({name, age, isMember, hobbies }) {
+function ProfileCard({name, age, isMember, hobbies, onHobbyClick }) {
    
     return (
             <div>
@@ -9,8 +9,11 @@ function ProfileCard({name, age, isMember, hobbies }) {
                 <h3>Status: {isMember ? "Active Member" : "Guest"}</h3>
                 <h3>Hobbies</h3>
                 <ul>
-                    {hobbies.map((hobby, index) =>{
-                       return <li key={index}>{hobby}</li> ;
+                    {hobbies.map((hobby, index) => {
+                       return <li key={index} 
+                                    onClick={()=> onHobbyClick(hobby)}>
+                                        {hobby} 
+                                        </li> ;
 
                     })}
                 </ul>
