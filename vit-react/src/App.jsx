@@ -1,33 +1,42 @@
 
 import './App.css'
-import ProfileCard from './ProfileCard';
+import { useState } from 'react';
+// useState
 
 function App() { 
-  const handleHobbyClick = (hobby) => {
-    alert(`You have clicked on: ${hobby}`);
-  };
-  const bubuRaniProfile = {
-    name:"BUBU Rani" ,
-    age:17,
-    isMember:true,
-    hobbies:['Reading','Cooking'], 
-    onHobbyClick:handleHobbyClick
+  const [count, setCount] = useState(0);
+  const [step, setStep] = useState(1);
+
+  const incrementTwice=() => {
+   // setCount(count + 1);
+    //setCount(count + 1);
+
+    
+    setCount(c => c + 1);
+    setCount(c => c + 1);
+
   };
 
-
-  const duduProfile = {
-    name:"DUDU Raja" ,
-    age:18,
-    isMember:false,
-    hobbies:['Swimming','Hiking'],
-    onHobbyClick:handleHobbyClick
+  const IncrementCount=() => {
+    setCount(count + step);
   };
- return (
-  <div className='app-container'>
-      <ProfileCard {...bubuRaniProfile}/>
-      <ProfileCard {...duduProfile}/> 
-  </div>
- );
+
+  const DecrementCount=() => {
+    setCount(count - step);
+  };
+
+  return (
+    <div className="app-container">
+      <h1>Counter value: {count}</h1>
+      <input type='number'
+              value={step}
+              onChange={(e) => setStep(parseInt(e.target.value))}/>
+      <button onClick={IncrementCount}>Increment</button>
+      <button onClick={DecrementCount}>Decrement</button>
+      <button onClick={incrementTwice}>+2</button>
+
+      </div>
+  )
 }
 
 
